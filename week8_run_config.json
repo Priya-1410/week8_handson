@@ -1,0 +1,57 @@
+{
+  "project_name": "Week8_Multimodal_LLMs",
+  "tracks": [
+    "speech_llm",
+    "conversational_viz",
+    "multimodal_router"
+  ],
+  "model_ids": {
+    "project_llm": "google/gemma-2b",
+    "whisper_audio_model": "openai/whisper-base"
+  },
+  "dataset": {
+    "name": "stock_market_realtime",
+    "source": "yfinance API",
+    "visualization_queries": [
+      "plot closing price of AAPL over time",
+      "show trading volume trend for TSLA"
+    ]
+  },
+  "router_config": {
+    "speech_keywords": [
+      "audio",
+      "voice",
+      "speak"
+    ],
+    "viz_keywords": [
+      "plot",
+      "chart",
+      "visualize"
+    ],
+    "qa_default": "project_llm",
+    "guardrails_blocklist": [
+      "malware",
+      "ssn",
+      "phi",
+      "injection"
+    ]
+  },
+  "metrics_expected": {
+    "avg_latency_s": 1.7,
+    "stt_accuracy": 0.95,
+    "chart_correctness": 1.0,
+    "router_accuracy": 1.0
+  },
+  "environment": {
+    "runtime": "Google Colab GPU (T4)",
+    "python_version": "3.12",
+    "libraries": [
+      "openai-whisper==20231117",
+      "SpeechRecognition==3.10.0",
+      "gTTS==2.5.1",
+      "matplotlib==3.8.4",
+      "pandas==2.2.2",
+      "yfinance==0.2.43"
+    ]
+  }
+}
